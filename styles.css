@@ -1,7 +1,132 @@
 
 
-body {
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
+}
+
+/* Page Layout */
+body {
+    background-color: #f5f5f5;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Container for all content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    height: 300vh; /* Enough scroll space */
+}
+
+/* Welcome Message */
+.welcome {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    margin: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 1;
+    transition: transform 0.5s ease-out;
+}
+
+/* Features Section */
+.features {
+    position: relative;
+    width: 100%;
+    margin-top: 100vh; /* Start appearing after scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 50px;
+}
+
+.feature-block {
+    width: 45%;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Initially hidden */
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+/* Why Sanctuary Section */
+.why-sanctuary-section {
+    min-height: 60vh; /* Reduced height for less gap */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    margin-bottom: 20px; /* Reduce space between title and blocks */
+}
+
+/* Title Animation */
+#why-sanctuary {
+    font-size: 3rem;
+    font-weight: bold;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Sanctuary Blocks Grid */
+.sanctuary-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Reduce space between blocks */
+    width: 90%;
+    max-width: 1200px; /* Keep it centered */
+    padding: 20px; /* Reduce padding */
+    margin: 0 auto; /* Center the grid */
+}
+
+/* Individual Blocks */
+.sanctuary-block {
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #272727, #121212);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.4s ease-out;
+}
+
+/* Hover Effect */
+.sanctuary-block:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #3a3a3a, #1c1c1c);
+}
+
+/* Unique Borders */
+#community { border-left: 6px solid #FFA500; }
+#inclusive { border-left: 6px solid #FF69B4; }
+#privacy { border-left: 6px solid #4B0082; }
+#tech { border-left: 6px solid #00BFFF; }
+#knowledge { border-left: 6px solid #32CD32; }
+#change { border-left: 6px solid #FF4500; }
+
+/* Mobile-Friendly (1 Column on Small Screens) */
+@media (max-width: 900px) {
+    .sanctuary-blocks {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .sanctuary-blocks {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
 }
